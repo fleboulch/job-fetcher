@@ -1,6 +1,6 @@
 package com.flb.jobfetcher.infra.storage;
 
-import com.flb.jobfetcher.domain.domain.JobAd;
+import com.flb.jobfetcher.domain.model.JobAd;
 import com.flb.jobfetcher.infra.storage.jpa.JobAdJpaRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;

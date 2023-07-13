@@ -1,8 +1,8 @@
 package com.flb.jobfetcher.domain.application;
 
-import com.flb.jobfetcher.domain.domain.JobAd;
-import com.flb.jobfetcher.domain.domain.JobAdStatistics;
-import com.flb.jobfetcher.domain.domain.SyncMode;
+import com.flb.jobfetcher.domain.model.JobAd;
+import com.flb.jobfetcher.domain.model.JobAdStatistics;
+import com.flb.jobfetcher.domain.model.SyncMode;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 

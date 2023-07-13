@@ -1,10 +1,10 @@
 package com.flb.jobfetcher.domain.application;
 
-import com.flb.jobfetcher.domain.domain.JobAd;
-import com.flb.jobfetcher.domain.domain.JobAdFetcher;
-import com.flb.jobfetcher.domain.domain.JobAdStatistics;
-import com.flb.jobfetcher.domain.domain.JobAdStorage;
-import com.flb.jobfetcher.domain.domain.SyncMode;
+import com.flb.jobfetcher.domain.model.JobAd;
+import com.flb.jobfetcher.domain.model.JobAdFetcher;
+import com.flb.jobfetcher.domain.model.JobAdStatistics;
+import com.flb.jobfetcher.domain.model.JobAdStorage;
+import com.flb.jobfetcher.domain.model.SyncMode;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

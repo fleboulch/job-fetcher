@@ -1,4 +1,4 @@
-package com.flb.jobfetcher.domain.domain;
+package com.flb.jobfetcher.domain.model;
 
 public enum SyncMode {
     FULL,

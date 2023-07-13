@@ -1,7 +1,7 @@
 package com.flb.jobfetcher.infra.storage;
 
-import com.flb.jobfetcher.domain.domain.JobAd;
-import com.flb.jobfetcher.domain.domain.JobAdStorage;
+import com.flb.jobfetcher.domain.model.JobAd;
+import com.flb.jobfetcher.domain.model.JobAdStorage;
 import com.flb.jobfetcher.infra.storage.jpa.JobAdJpaRepository;
 import org.springframework.stereotype.Repository;
 

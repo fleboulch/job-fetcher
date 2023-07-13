@@ -1,7 +1,7 @@
 package com.flb.jobfetcher.domain.application;
 
-import com.flb.jobfetcher.domain.domain.JobAd;
-import com.flb.jobfetcher.domain.domain.JobAdFetcher;
+import com.flb.jobfetcher.domain.model.JobAd;
+import com.flb.jobfetcher.domain.model.JobAdFetcher;
 
 import java.util.List;
 

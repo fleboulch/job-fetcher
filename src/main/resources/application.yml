@@ -1,0 +1,2 @@
+pole-emploi:
+  url: https://api.pole-emploi.io/partenaire/offresdemploi

@@ -1,0 +1,39 @@
+package com.flb.jobfetcher.infra.http;
+
+import com.github.tomakehurst.wiremock.client.WireMock;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+
+import static com.flb.jobfetcher.infra.http.JobAdWebClientTest.WIREMOCK_SERVER;
+
+public class PoleEmploiApiUtils {
+
+    public static void getJobAds() {
+        WIREMOCK_SERVER.stubFor(
+            WireMock.get("/v2/offres/search?departement=33")
+                .willReturn(
+                    WireMock.aResponse()
+                        .withStatus(HttpStatus.OK.value())
+                        .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
+                        .withBody(
+                            //language=json
+                            """
+                                    {
+                                        "resultats": [
+                                            {
+                                                "id": "17",
+                                                "intitule": "Web developer"
+                                            },
+                                            {
+                                                "id": "18",
+                                                "intitule": "Devops"
+                                            }
+                                        ]
+                                    }
+                                """
+                        )
+                )
+        );
+
+    }
+}
