@@ -13,22 +13,26 @@ import static org.assertj.core.api.Assertions.assertThat;
 class SyncJobAdTest {
 
     private JobAdFetcherStub fetcher = new JobAdFetcherStub();
-    private SyncJobAd useCase = new SyncJobAd(fetcher);
+    private JobAdStorageStub storage = new JobAdStorageStub();
+    private SyncJobAd useCase = new SyncJobAd(fetcher, storage);
 
     @Nested
     class FullMode {
         @Test
         void it_should_sync_job_ad() {
             // given
-            fetcher.init(List.of(
+            List<JobAd> jobAds = List.of(
                 new JobAd(),
                 new JobAd()
-            ));
+            );
+            fetcher.init(jobAds);
+            storage.init(jobAds);
 
             // when
             JobAdStatistics statistics = useCase.handle(SyncMode.FULL);
 
             // then
+            assertThat(storage.isSyncWasCalled()).isTrue();
             assertThat(statistics).isEqualTo(new JobAdStatistics(2));
         }
 

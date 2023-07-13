@@ -1,4 +1,4 @@
-package com.flb.jobfetcher.infra;
+package com.flb.jobfetcher.infra.http;
 
 import com.flb.jobfetcher.domain.domain.JobAd;
 import com.flb.jobfetcher.domain.domain.JobAdFetcher;
