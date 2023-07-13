@@ -22,8 +22,8 @@ class SyncJobAdTest {
         void it_should_sync_job_ad() {
             // given
             List<JobAd> jobAds = List.of(
-                new JobAd(),
-                new JobAd()
+                new JobAd("1", "Web developer"),
+                new JobAd("2", "Devops")
             );
             fetcher.init(jobAds);
             storage.init(jobAds);

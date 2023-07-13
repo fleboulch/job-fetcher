@@ -10,4 +10,7 @@ import lombok.ToString;
 @EqualsAndHashCode
 @ToString
 public class JobAd {
+
+    private String id;
+    private String title;
 }
