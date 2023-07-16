@@ -18,3 +18,19 @@ Here I'm using lombok but in the real life I'm not a big fan of this library. So
 ### Equals and hashcode on jpa entity
 
 They have been generated using JpaBuddy utility
+
+### Git commits
+
+I write commits as an history so it can help people to understand what the application does.
+
+### Architecture
+
+I'm using hexagonal architecture.
+
+### Testing
+
+I'm using testing use case concept
+
+### Development methodology
+
+I used real TDD to develop this project.
