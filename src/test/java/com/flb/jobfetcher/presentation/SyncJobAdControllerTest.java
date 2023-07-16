@@ -33,7 +33,7 @@ class SyncJobAdControllerTest {
         when(useCase.handle(SyncMode.FULL)).thenReturn(new JobAdStatistics(10));
 
         // when
-        mockMvc.perform(post("/job-ads/sync")
+        mockMvc.perform(post("/api/job-ads/sync")
             .contentType(MediaType.APPLICATION_JSON))
             .andExpect(status().isOk())
             .andExpect(content().json(

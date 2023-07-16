@@ -1,0 +1,8 @@
+### Sync job ads from Pole Emploi API
+POST http://localhost:8080/api/job-ads/sync
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}

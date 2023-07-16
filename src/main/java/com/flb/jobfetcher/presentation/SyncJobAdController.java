@@ -17,7 +17,7 @@ public class SyncJobAdController {
         this.useCase = useCase;
     }
 
-    @PostMapping(value = "/job-ads/sync", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/api/job-ads/sync", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<JobAdStatisticsResponse> sync() {
         JobAdStatistics statistics = useCase.handle(SyncMode.FULL);
         JobAdStatisticsResponse response = toPresentation(statistics);

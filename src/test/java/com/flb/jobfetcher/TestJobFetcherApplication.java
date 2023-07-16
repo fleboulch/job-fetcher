@@ -1,5 +1,6 @@
 package com.flb.jobfetcher;
 
+import com.flb.jobfetcher.infra.storage.ContainersConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.test.context.TestConfiguration;
 
@@ -7,7 +8,10 @@ import org.springframework.boot.test.context.TestConfiguration;
 public class TestJobFetcherApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.from(JobFetcherApplication::main).with(TestJobFetcherApplication.class).run(args);
+		SpringApplication.from(JobFetcherApplication::main)
+            .with(TestJobFetcherApplication.class)
+            .with(ContainersConfiguration.class)
+            .run(args);
 	}
 
 }
