@@ -24,7 +24,6 @@ public class SyncJobAd {
     public JobAdStatistics handle() {
         Pair<List<JobAd>, Aggregation> fetchedJobAds = fetcher.fetch();
         storage.sync(fetchedJobAds.getFirst());
-        List<JobAd> jobAds = storage.findAll();
-        return new JobAdStatistics(jobAds.size(), fetchedJobAds.getSecond());
+        return new JobAdStatistics(storage.count(), fetchedJobAds.getSecond());
     }
 }

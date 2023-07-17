@@ -39,12 +39,10 @@ class JobAdRepositoryTest {
             ));
 
             // when
-            List<JobAd> jobAds = repository.findAll();
+            long totalJobAds = repository.count();
 
             // then
-            assertThat(jobAds).containsExactlyInAnyOrder(
-                new JobAd("random", "Web developer")
-            );
+            assertThat(totalJobAds).isEqualTo(1);
 
         }
     }

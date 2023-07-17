@@ -19,8 +19,8 @@ public class JobAdStorageStub implements JobAdStorage {
     }
 
     @Override
-    public List<JobAd> findAll() {
-        return jobAds;
+    public long count() {
+        return jobAds.size();
     }
 
     public void init(List<JobAd> jobAds) {

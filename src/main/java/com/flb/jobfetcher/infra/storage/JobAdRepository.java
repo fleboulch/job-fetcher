@@ -26,25 +26,16 @@ public class JobAdRepository implements JobAdStorage {
             .map(this::toJpa)
             .toList();
     }
+
     private JobAdJpa toJpa(JobAd domain) {
         return new JobAdJpa(
             domain.getId(),
             domain.getTitle()
         );
     }
-
     @Override
-    public List<JobAd> findAll() {
-        return jpaRepository.findAll()
-            .stream()
-            .map(this::toDomain)
-            .toList();
+    public long count() {
+        return jpaRepository.count();
     }
 
-    private JobAd toDomain(JobAdJpa jpa) {
-        return new JobAd(
-            jpa.getId(),
-            jpa.getTitle()
-        );
-    }
 }

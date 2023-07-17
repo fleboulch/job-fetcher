@@ -6,5 +6,5 @@ public interface JobAdStorage {
 
     void sync(List<JobAd> jobAds);
 
-    List<JobAd> findAll();
+    long count();
 }
