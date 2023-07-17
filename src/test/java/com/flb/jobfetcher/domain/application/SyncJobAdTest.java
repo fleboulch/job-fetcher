@@ -2,7 +2,6 @@ package com.flb.jobfetcher.domain.application;
 
 import com.flb.jobfetcher.domain.model.JobAd;
 import com.flb.jobfetcher.domain.model.JobAdStatistics;
-import com.flb.jobfetcher.domain.model.SyncMode;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -29,7 +28,7 @@ class SyncJobAdTest {
             storage.init(jobAds);
 
             // when
-            JobAdStatistics statistics = useCase.handle(SyncMode.FULL);
+            JobAdStatistics statistics = useCase.handle();
 
             // then
             assertThat(storage.isSyncWasCalled()).isTrue();

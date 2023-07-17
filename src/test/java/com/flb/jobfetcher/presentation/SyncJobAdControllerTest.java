@@ -2,7 +2,6 @@ package com.flb.jobfetcher.presentation;
 
 import com.flb.jobfetcher.domain.application.SyncJobAd;
 import com.flb.jobfetcher.domain.model.JobAdStatistics;
-import com.flb.jobfetcher.domain.model.SyncMode;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -30,7 +29,7 @@ class SyncJobAdControllerTest {
     @Test
     void it_should_return_the_statistics_after_a_run() throws Exception {
         // given
-        when(useCase.handle(SyncMode.FULL)).thenReturn(new JobAdStatistics(10));
+        when(useCase.handle()).thenReturn(new JobAdStatistics(10));
 
         // when
         mockMvc.perform(post("/api/job-ads/sync")

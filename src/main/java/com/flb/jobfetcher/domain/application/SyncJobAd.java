@@ -4,7 +4,6 @@ import com.flb.jobfetcher.domain.model.JobAd;
 import com.flb.jobfetcher.domain.model.JobAdFetcher;
 import com.flb.jobfetcher.domain.model.JobAdStatistics;
 import com.flb.jobfetcher.domain.model.JobAdStorage;
-import com.flb.jobfetcher.domain.model.SyncMode;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +19,7 @@ public class SyncJobAd {
         this.storage = storage;
     }
 
-    public JobAdStatistics handle(SyncMode mode) {
+    public JobAdStatistics handle() {
         List<JobAd> fetchedJobAds = fetcher.fetch();
         storage.sync(fetchedJobAds);
         List<JobAd> jobAds = storage.findAll();
