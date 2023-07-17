@@ -12,6 +12,7 @@ public interface PoleEmploiWebClient {
 
     @GetExchange(url = "/v2/offres/search")
     ResponseEntity<JobAdResponseDto> searchJobAds(
-        @RequestParam String departement
+        @RequestParam String departement,
+        @RequestParam String range
     );
 }

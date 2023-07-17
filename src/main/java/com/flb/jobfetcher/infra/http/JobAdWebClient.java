@@ -18,7 +18,7 @@ public class JobAdWebClient implements JobAdFetcher {
 
     @Override
     public List<JobAd> fetch() {
-        ResponseEntity<JobAdResponseDto> jobAds = webClient.searchJobAds("33");
+        ResponseEntity<JobAdResponseDto> jobAds = webClient.searchJobAds("33", "0-99");
         return toDomain(jobAds.getBody());
     }
 

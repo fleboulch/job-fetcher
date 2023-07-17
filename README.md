@@ -10,7 +10,11 @@ I want to run the test suite
 `./gradlew test`
 
 I want to run the application
-`./gradlew bootTestRun`. It will create a postgresql database in a docker container behind the hood. Thanks to Spring Boot 3.1.
+```shell
+# replace the <change-me> with your own access token
+POLE_EMPLOI_API_TOKEN=<change-me> ./gradlew bootTestRun
+```
+It will create a postgresql database in a docker container behind the hood. Thanks to Spring Boot 3.1.
 
 I want to access to the database. The JDBC url is `jdbc:postgresql://localhost:<dynamic-port>/job`. The credentials are:
 - the username is `admin`

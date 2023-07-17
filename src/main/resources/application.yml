@@ -1,5 +1,6 @@
 pole-emploi:
   url: https://api.pole-emploi.io/partenaire/offresdemploi
+  access-token: ${POLE_EMPLOI_API_TOKEN}
 
 spring:
   jpa:

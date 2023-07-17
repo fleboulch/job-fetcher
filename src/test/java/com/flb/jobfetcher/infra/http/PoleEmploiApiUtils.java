@@ -10,7 +10,7 @@ public class PoleEmploiApiUtils {
 
     public static void getJobAds() {
         WIREMOCK_SERVER.stubFor(
-            WireMock.get("/v2/offres/search?departement=33")
+            WireMock.get("/v2/offres/search?departement=33&range=0-99")
                 .willReturn(
                     WireMock.aResponse()
                         .withStatus(HttpStatus.OK.value())
