@@ -8,8 +8,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.reactive.function.client.WebClientResponseException;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -43,5 +45,20 @@ class SyncJobAdControllerTest {
                 }
                 """
             ));
+    }
+
+    @Test
+    void it_should_return_unauthorized_exception() throws Exception {
+        // given
+        when(useCase.handle()).thenThrow(buildUnauthorizedException());
+
+        // when
+        mockMvc.perform(post("/api/job-ads/sync")
+            .contentType(MediaType.APPLICATION_JSON))
+            .andExpect(status().isUnauthorized());
+    }
+
+    private WebClientResponseException buildUnauthorizedException() {
+        return WebClientResponseException.create(HttpStatus.UNAUTHORIZED.value(), null, null, null, null);
     }
 }
