@@ -5,14 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-class JobAdStatisticsResponse {
+class ContractTypeDto {
 
-    private long total;
-    private List<ContractTypeDto> topContractTypes;
+    private String name;
+    private long occurrences;
 }

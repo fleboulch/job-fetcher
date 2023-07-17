@@ -9,9 +9,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-class JobAdResponseDto {
-
-    private List<JobAdDto> resultats;
-    private List<FilterDto> filtresPossibles;
-
+class FilterDto {
+    private String filtre;
+    private List<AggregationFilterDto> agregation;
 }

@@ -1,5 +1,7 @@
 package com.flb.jobfetcher.presentation;
 
+import com.flb.jobfetcher.domain.Aggregation;
+import com.flb.jobfetcher.domain.AggregationDetails;
 import com.flb.jobfetcher.domain.application.SyncJobAd;
 import com.flb.jobfetcher.domain.model.JobAdStatistics;
 import org.springframework.http.MediaType;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClientResponseException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import java.util.List;
 
 @RestController
 public class SyncJobAdController extends ResponseEntityExceptionHandler {
@@ -29,8 +33,19 @@ public class SyncJobAdController extends ResponseEntityExceptionHandler {
 
     private JobAdStatisticsResponse toPresentation(JobAdStatistics statistics) {
         return new JobAdStatisticsResponse(
-            statistics.totalJobAds()
+            statistics.totalJobAds(),
+            toPresentation(statistics.topContractTypes())
         );
+    }
+
+    private List<ContractTypeDto> toPresentation(Aggregation aggregation) {
+        return aggregation.values().stream()
+            .map(this::toPresentation)
+            .toList();
+    }
+
+    private ContractTypeDto toPresentation(AggregationDetails domain) {
+        return new ContractTypeDto(domain.value(), domain.occurrences());
     }
 
     @ExceptionHandler({WebClientResponseException.Unauthorized.class})

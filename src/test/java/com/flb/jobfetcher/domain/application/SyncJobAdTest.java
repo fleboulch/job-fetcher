@@ -1,5 +1,7 @@
 package com.flb.jobfetcher.domain.application;
 
+import com.flb.jobfetcher.domain.Aggregation;
+import com.flb.jobfetcher.domain.AggregationDetails;
 import com.flb.jobfetcher.domain.model.JobAd;
 import com.flb.jobfetcher.domain.model.JobAdStatistics;
 import org.junit.jupiter.api.Nested;
@@ -32,7 +34,13 @@ class SyncJobAdTest {
 
             // then
             assertThat(storage.isSyncWasCalled()).isTrue();
-            assertThat(statistics).isEqualTo(new JobAdStatistics(2));
+            assertThat(statistics).isEqualTo(new JobAdStatistics(
+                2,
+                new Aggregation(List.of(
+                    new AggregationDetails("CDI", 10),
+                    new AggregationDetails("MIS",5),
+                    new AggregationDetails("DDI", 2)
+            ))));
         }
 
     }
