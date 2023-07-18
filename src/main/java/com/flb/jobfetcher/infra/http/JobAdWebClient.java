@@ -10,6 +10,8 @@ import java.util.List;
 @Repository
 public class JobAdWebClient implements JobAdFetcher {
 
+    private static final String GIRONDE_DEPARTMENT = "33";
+    private static final String RANGE_RESULTS = "0-99";
     private final PoleEmploiWebClient webClient;
 
     public JobAdWebClient(PoleEmploiWebClient webClient) {
@@ -18,7 +20,7 @@ public class JobAdWebClient implements JobAdFetcher {
 
     @Override
     public List<JobAd> fetch() {
-        ResponseEntity<JobAdResponseDto> jobAds = webClient.searchJobAds("33", "0-99");
+        ResponseEntity<JobAdResponseDto> jobAds = webClient.searchJobAds(GIRONDE_DEPARTMENT, RANGE_RESULTS);
         return toDomain(jobAds.getBody());
     }
 

@@ -1,8 +1,6 @@
 package com.flb.jobfetcher.infra.storage;
 
 import com.flb.jobfetcher.domain.model.*;
-import com.flb.jobfetcher.infra.storage.jpa.AggregationViewJpa;
-import com.flb.jobfetcher.infra.storage.jpa.JobAdJpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -29,10 +27,10 @@ public class JobAdRepository implements JobAdStorage {
 
     private JobAdJpa toJpa(JobAd domain) {
         return new JobAdJpa(
-            domain.getId(),
-            domain.getTitle(),
-            domain.getContractType(),
-            domain.getCity()
+            domain.id(),
+            domain.title(),
+            domain.contractType(),
+            domain.city()
         );
     }
 
@@ -45,12 +43,13 @@ public class JobAdRepository implements JobAdStorage {
     public JobAdStatistics computeStatistics() {
         long countJobAds = jpaRepository.count();
         List<AggregationViewJpa> top10ContractTypesJpa = jpaRepository.findTop10ContractTypes();
-        Aggregation top10ContractTypes = toDomain(top10ContractTypesJpa);
-
         List<AggregationViewJpa> top10CitiesJpa = jpaRepository.findTop10Cities();
-        Aggregation top10Cities = toDomain(top10CitiesJpa);
 
-        return new JobAdStatistics(countJobAds, top10ContractTypes, top10Cities);
+        return new JobAdStatistics(
+            countJobAds,
+            toDomain(top10ContractTypesJpa),
+            toDomain(top10CitiesJpa)
+        );
     }
 
     private Aggregation toDomain(List<AggregationViewJpa> top10ContractTypesJpa) {

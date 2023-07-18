@@ -1,4 +1,4 @@
-package com.flb.jobfetcher.infra.storage.jpa;
+package com.flb.jobfetcher.infra.storage;
 
 public interface AggregationViewJpa {
 

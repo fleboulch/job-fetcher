@@ -31,11 +31,11 @@ public class JobAdStorageStub implements JobAdStorage {
     }
 
     private Aggregation top10ContractTypes() {
-        return top10(JobAd::getContractType);
+        return top10(JobAd::contractType);
     }
 
     private Aggregation top10Cities() {
-        return top10(JobAd::getCity);
+        return top10(JobAd::city);
     }
 
     private Aggregation top10(Function<JobAd, String> field) {

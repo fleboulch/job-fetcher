@@ -1,6 +1,5 @@
-package com.flb.jobfetcher.infra.storage.jpa;
+package com.flb.jobfetcher.infra.storage;
 
-import com.flb.jobfetcher.infra.storage.JobAdJpa;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

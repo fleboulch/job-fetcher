@@ -13,7 +13,6 @@ public class ContainersConfiguration {
     PostgreSQLContainer<?> postgreContainer() {
         return new PostgreSQLContainer<>("postgres:15.2-alpine")
             .withDatabaseName("job")
-//            .withExposedPorts(5432)
             .withUsername("admin")
             .withPassword("change-me"); // the strong password should be in an environment variable in a real application for security reasons
     }

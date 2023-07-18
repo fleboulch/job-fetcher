@@ -1,12 +1,11 @@
 package com.flb.jobfetcher.domain.application;
 
-import com.flb.jobfetcher.domain.model.Aggregation;
 import com.flb.jobfetcher.domain.model.JobAd;
 import com.flb.jobfetcher.domain.model.JobAdFetcher;
 import com.flb.jobfetcher.domain.model.JobAdStatistics;
 import com.flb.jobfetcher.domain.model.JobAdStorage;
-import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -21,9 +20,10 @@ public class SyncJobAd {
         this.storage = storage;
     }
 
+    @Transactional
     public JobAdStatistics handle() {
         List<JobAd> fetchedJobAds = fetcher.fetch();
-        storage.deleteAll(); // I'm cheating a bit here but it fits the need for full and incremental sync. It's not optimal
+        storage.deleteAll();
         storage.sync(fetchedJobAds);
         return storage.computeStatistics();
     }

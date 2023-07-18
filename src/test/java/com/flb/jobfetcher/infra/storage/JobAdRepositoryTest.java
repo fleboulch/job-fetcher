@@ -4,7 +4,6 @@ import com.flb.jobfetcher.domain.model.Aggregation;
 import com.flb.jobfetcher.domain.model.AggregationDetails;
 import com.flb.jobfetcher.domain.model.JobAd;
 import com.flb.jobfetcher.domain.model.JobAdStatistics;
-import com.flb.jobfetcher.infra.storage.jpa.JobAdJpaRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
