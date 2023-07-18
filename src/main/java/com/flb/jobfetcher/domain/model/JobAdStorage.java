@@ -7,4 +7,6 @@ public interface JobAdStorage {
     void sync(List<JobAd> jobAds);
 
     long count();
+
+    void deleteAll();
 }

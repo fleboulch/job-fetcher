@@ -4,7 +4,6 @@ import com.flb.jobfetcher.domain.Aggregation;
 import com.flb.jobfetcher.domain.AggregationDetails;
 import com.flb.jobfetcher.domain.model.JobAd;
 import com.flb.jobfetcher.domain.model.JobAdStatistics;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -17,31 +16,29 @@ class SyncJobAdTest {
     private JobAdStorageStub storage = new JobAdStorageStub();
     private SyncJobAd useCase = new SyncJobAd(fetcher, storage);
 
-    @Nested
-    class FullMode {
-        @Test
-        void it_should_sync_job_ad() {
-            // given
-            List<JobAd> jobAds = List.of(
-                new JobAd("1", "Web developer"),
-                new JobAd("2", "Devops")
-            );
-            fetcher.init(jobAds);
-            storage.init(jobAds);
+    @Test
+    void it_should_sync_job_ad() {
+        // given
+        fetcher.init(List.of(
+            new JobAd("1", "Web developer"),
+            new JobAd("2", "Devops")
+        ));
+        storage.init(List.of(
+            new JobAd("3", "Web developer"),
+            new JobAd("4", "Devops")
+        ));
 
-            // when
-            JobAdStatistics statistics = useCase.handle();
+        // when
+        JobAdStatistics statistics = useCase.handle();
 
-            // then
-            assertThat(storage.isSyncWasCalled()).isTrue();
-            assertThat(statistics).isEqualTo(new JobAdStatistics(
-                2,
-                new Aggregation(List.of(
-                    new AggregationDetails("CDI", 10),
-                    new AggregationDetails("MIS",5),
-                    new AggregationDetails("DDI", 2)
+        // then
+        assertThat(statistics).isEqualTo(new JobAdStatistics(
+            2,
+            new Aggregation(List.of(
+                new AggregationDetails("CDI", 10),
+                new AggregationDetails("MIS", 5),
+                new AggregationDetails("DDI", 2)
             ))));
-        }
-
     }
+
 }

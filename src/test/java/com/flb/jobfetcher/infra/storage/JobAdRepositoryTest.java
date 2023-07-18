@@ -29,7 +29,7 @@ class JobAdRepositoryTest {
     }
 
     @Nested
-    class FindAll {
+    class Count {
 
         @Test
         void should_return_all_job_ads() {
@@ -66,6 +66,25 @@ class JobAdRepositoryTest {
                     new JobAdJpa("ignored 2", "DevOps")
                 );
         }
+    }
+
+    @Nested
+    class DeleteAll {
+        @Test
+        void should_sync_job_ads() {
+            // given
+            jpaRepository.saveAll(List.of(
+                new JobAdJpa("random", "Web developer"),
+                new JobAdJpa("random 2", "DevOps")
+            ));
+
+            // when
+            repository.deleteAll();
+
+            // then
+            assertThat(jpaRepository.count()).isZero();
+        }
+
     }
 
 }

@@ -23,6 +23,7 @@ public class SyncJobAd {
 
     public JobAdStatistics handle() {
         Pair<List<JobAd>, Aggregation> fetchedJobAds = fetcher.fetch();
+        storage.deleteAll(); // I'm cheating a bit here but it fits the need for full and incremental sync. It's not optimal
         storage.sync(fetchedJobAds.getFirst());
         return new JobAdStatistics(storage.count(), fetchedJobAds.getSecond());
     }

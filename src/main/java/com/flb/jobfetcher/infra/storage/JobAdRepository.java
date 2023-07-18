@@ -38,4 +38,9 @@ public class JobAdRepository implements JobAdStorage {
         return jpaRepository.count();
     }
 
+    @Override
+    public void deleteAll() {
+        jpaRepository.deleteAll();
+    }
+
 }
