@@ -12,6 +12,5 @@ import java.util.List;
 class JobAdResponseDto {
 
     private List<JobAdDto> resultats;
-    private List<FilterDto> filtresPossibles;
 
 }

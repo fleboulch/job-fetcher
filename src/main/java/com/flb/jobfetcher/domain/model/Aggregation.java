@@ -1,4 +1,4 @@
-package com.flb.jobfetcher.domain;
+package com.flb.jobfetcher.domain.model;
 
 import java.util.List;
 

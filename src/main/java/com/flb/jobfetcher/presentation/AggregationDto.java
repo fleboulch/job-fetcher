@@ -9,7 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-class ContractTypeDto {
+class AggregationDto {
 
     private String name;
     private long occurrences;

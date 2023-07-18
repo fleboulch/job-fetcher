@@ -1,7 +1,7 @@
 package com.flb.jobfetcher.presentation;
 
-import com.flb.jobfetcher.domain.Aggregation;
-import com.flb.jobfetcher.domain.AggregationDetails;
+import com.flb.jobfetcher.domain.model.Aggregation;
+import com.flb.jobfetcher.domain.model.AggregationDetails;
 import com.flb.jobfetcher.domain.application.SyncJobAd;
 import com.flb.jobfetcher.domain.model.JobAdStatistics;
 import org.junit.jupiter.api.Test;
@@ -36,13 +36,16 @@ class SyncJobAdControllerTest {
     void it_should_return_the_statistics_after_a_run() throws Exception {
         // given
         when(useCase.handle()).thenReturn(new JobAdStatistics(
-            10,
+            1000,
             new Aggregation(List.of(
-                new AggregationDetails("CDI", 13371),
-                new AggregationDetails("MIS", 6045),
-                new AggregationDetails("DDI", 3913)
-            ))
-        ));
+                new AggregationDetails("CDI", 800),
+                new AggregationDetails("MIS", 110),
+                new AggregationDetails("DDI", 90)
+            )),
+            new Aggregation(List.of(
+                new AggregationDetails("33 - Bordeaux", 750),
+                new AggregationDetails("33 - Lormont", 250)
+            ))));
 
         // when
         mockMvc.perform(post("/api/job-ads/sync")
@@ -52,19 +55,29 @@ class SyncJobAdControllerTest {
                 //language=json
                 """
                 {
-                    "total": 10,
+                    "total": 1000,
                     "topContractTypes": [
                         {
                             "name": "CDI",
-                            "occurrences": 13371
+                            "occurrences": 800
                         },
                         {
                             "name": "MIS",
-                            "occurrences": 6045
+                            "occurrences": 110
                         },
                         {
                             "name": "DDI",
-                            "occurrences": 3913
+                            "occurrences": 90
+                        }
+                    ],
+                    "topCities": [
+                        {
+                            "name": "33 - Bordeaux",
+                            "occurrences": 750
+                        },
+                        {
+                            "name": "33 - Lormont",
+                            "occurrences": 250
                         }
                     ]
                 }

@@ -13,4 +13,6 @@ public class JobAd {
 
     private String id;
     private String title;
+    private String contractType;
+    private String city;
 }

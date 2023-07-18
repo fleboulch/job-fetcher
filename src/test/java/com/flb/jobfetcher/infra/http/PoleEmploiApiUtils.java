@@ -13,7 +13,7 @@ public class PoleEmploiApiUtils {
             WireMock.get("/v2/offres/search?departement=33&range=0-99")
                 .willReturn(
                     WireMock.aResponse()
-                        .withStatus(HttpStatus.OK.value())
+                        .withStatus(HttpStatus.PARTIAL_CONTENT.value())
                         .withHeader("Content-Type", MediaType.APPLICATION_JSON_VALUE)
                         .withBody(
                             //language=json
@@ -22,71 +22,19 @@ public class PoleEmploiApiUtils {
                                         "resultats": [
                                             {
                                                 "id": "17",
-                                                "intitule": "Web developer"
+                                                "intitule": "Web developer",
+                                                "typeContrat": "CDD",
+                                                "lieuTravail": {
+                                                    "libelle": "33 - BORDEAUX"
+                                                }
                                             },
                                             {
                                                 "id": "18",
-                                                "intitule": "Devops"
-                                            }
-                                        ],
-                                        "filtresPossibles": [
-                                            {
-                                                "filtre": "typeContrat",
-                                                "agregation": [
-                                                    {
-                                                        "valeurPossible": "CCE",
-                                                        "nbResultats": 54
-                                                    },
-                                                    {
-                                                        "valeurPossible": "CDD",
-                                                        "nbResultats": 3913
-                                                    },
-                                                    {
-                                                        "valeurPossible": "CDI",
-                                                        "nbResultats": 13371
-                                                    },
-                                                    {
-                                                        "valeurPossible": "DDI",
-                                                        "nbResultats": 9
-                                                    },
-                                                    {
-                                                        "valeurPossible": "DIN",
-                                                        "nbResultats": 25
-                                                    },
-                                                    {
-                                                        "valeurPossible": "FRA",
-                                                        "nbResultats": 178
-                                                    },
-                                                    {
-                                                        "valeurPossible": "LIB",
-                                                        "nbResultats": 411
-                                                    },
-                                                    {
-                                                        "valeurPossible": "MIS",
-                                                        "nbResultats": 6045
-                                                    },
-                                                    {
-                                                        "valeurPossible": "SAI",
-                                                        "nbResultats": 260
-                                                    }
-                                                ]
-                                            },
-                                            {
-                                                "filtre": "qualification",
-                                                "agregation": [
-                                                    {
-                                                        "valeurPossible": "0",
-                                                        "nbResultats": 10708
-                                                    },
-                                                    {
-                                                        "valeurPossible": "9",
-                                                        "nbResultats": 1211
-                                                    },
-                                                    {
-                                                        "valeurPossible": "X",
-                                                        "nbResultats": 12347
-                                                    }
-                                                ]
+                                                "intitule": "Devops",
+                                                "typeContrat": "CDD",
+                                                "lieuTravail": {
+                                                    "libelle": "33 - BORDEAUX"
+                                                }
                                             }
                                         ]
                                     }

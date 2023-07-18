@@ -11,4 +11,6 @@ class JobAdDto {
 
     private String id;
     private String intitule;
+    private String typeContrat;
+    private WorkplaceDto lieuTravail;
 }

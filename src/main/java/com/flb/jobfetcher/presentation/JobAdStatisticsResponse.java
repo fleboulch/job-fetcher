@@ -14,5 +14,6 @@ import java.util.List;
 class JobAdStatisticsResponse {
 
     private long total;
-    private List<ContractTypeDto> topContractTypes;
+    private List<AggregationDto> topContractTypes;
+    private List<AggregationDto> topCities;
 }

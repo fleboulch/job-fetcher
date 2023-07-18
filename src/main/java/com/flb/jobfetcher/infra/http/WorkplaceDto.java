@@ -7,7 +7,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-class AggregationFilterDto {
-    private String valeurPossible;
-    private long nbResultats;
+public class WorkplaceDto {
+
+    private String libelle;
 }

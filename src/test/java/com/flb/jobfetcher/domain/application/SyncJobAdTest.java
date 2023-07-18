@@ -1,7 +1,7 @@
 package com.flb.jobfetcher.domain.application;
 
-import com.flb.jobfetcher.domain.Aggregation;
-import com.flb.jobfetcher.domain.AggregationDetails;
+import com.flb.jobfetcher.domain.model.Aggregation;
+import com.flb.jobfetcher.domain.model.AggregationDetails;
 import com.flb.jobfetcher.domain.model.JobAd;
 import com.flb.jobfetcher.domain.model.JobAdStatistics;
 import org.junit.jupiter.api.Test;
@@ -20,12 +20,13 @@ class SyncJobAdTest {
     void it_should_sync_job_ad() {
         // given
         fetcher.init(List.of(
-            new JobAd("1", "Web developer"),
-            new JobAd("2", "Devops")
+            new JobAd("4", "Devops", "CDI", "Bordeaux"),
+            new JobAd("1", "Web developer", "CDD", "Bordeaux"),
+            new JobAd("2", "Devops", "CDD", "Bordeaux")
         ));
         storage.init(List.of(
-            new JobAd("3", "Web developer"),
-            new JobAd("4", "Devops")
+            new JobAd("3", "Web developer", "CDD", "Bordeaux"),
+            new JobAd("4", "Devops", "CDD", "Bordeaux")
         ));
 
         // when
@@ -33,12 +34,15 @@ class SyncJobAdTest {
 
         // then
         assertThat(statistics).isEqualTo(new JobAdStatistics(
-            2,
+            3,
             new Aggregation(List.of(
-                new AggregationDetails("CDI", 10),
-                new AggregationDetails("MIS", 5),
-                new AggregationDetails("DDI", 2)
-            ))));
+                new AggregationDetails("CDD", 2),
+                new AggregationDetails("CDI", 1)
+            )),
+            new Aggregation(List.of(
+                new AggregationDetails("Bordeaux", 3)
+            ))
+        ));
     }
 
 }
