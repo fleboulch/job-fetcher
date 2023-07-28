@@ -6,3 +6,17 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create
+
+  security:
+    oauth2:
+      client:
+        registration:
+          flo:
+            authorization-grant-type: client_credentials
+            client-id: <client-id>
+            client-secret: <client-secret>
+            scope: api_offresdemploiv2, o2dsoffre
+        provider:
+          flo:
+            token-uri: https://entreprise.pole-emploi.fr/connexion/oauth2/access_token?realm=/partenaire
+
